@@ -1,0 +1,42 @@
+<div class="row">
+  <div class="column" style="width: 15%; background-color: #f4f4f6;">
+    <h3 style='color: #285766;'><%= @role.pluralize.upcase %></h3>
+    <ul>
+      <% @all_persons.each do |person| %>
+        <% if (person[:id] == @person[:id]) %>
+          <div style="font-size: 20px; background-color: lightblue;">
+            <%= link_to "#{person[:last_name].humanize}, #{person[:first_name].humanize}", appointments_index_path(role: @role, person_id: person[:id]), {:style=>'color:#FFFFFF;'} %>
+          </div>
+        <% else %>
+          <div style="font-size: 20px;">
+            <%= link_to "#{person[:last_name].humanize}, #{person[:first_name].humanize}", appointments_index_path(role: @role, person_id: person[:id]), {:style=>'color: #285766; text-decoration: none'} %>
+          </div>
+        <% end %>
+          </br>
+      <% end %>
+    </ul>
+  </div>
+  <div class="column">
+    <h1 style='color: #285766;'><%= "Dr. #{@person[:first_name].humanize} #{@person[:last_name].humanize}" %></h1>
+    <h3 style='color: #285766;'><%= "#{@person[:email]}" %></h1>
+    <table>
+      <thead style="background-color: lightblue; color: white; font-size: 20px;">
+        <tr>
+          <th style="width: 150px;">Time</th>
+          <th style="width: 150px;">Name</th>
+          <th style="width: 150px;">Kind</th>
+        </tr>
+      </thead>
+      <tbody style="color: #285766; font-size: 20px;">
+        <% @appointments.each do |appointment| %>
+          <tr>
+            <td><%= appointment[:appointment_at].strftime("%I:%M %p") %></td>
+            <td><%= "#{appointment[:patient][:first_name]} #{appointment[:patient][:last_name]}" %></td>
+            <td><%= appointment[:kind] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>
+

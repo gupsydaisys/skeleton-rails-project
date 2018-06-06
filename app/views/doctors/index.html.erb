@@ -1,0 +1,12 @@
+<div style="width: 15%; background-color: #f4f4f6;">
+  <h3 style='color: #285766;'>DOCTORS</h3>
+  <ul>
+    <% @doctors.each do |doctor| %>
+      <div style="font-size: 20px;">
+        <%= link_to "#{doctor[:last_name].humanize}, #{doctor[:first_name].humanize}", appointments_index_path(role: 'doctor', person_id: doctor[:id]), {:style=>'color: #285766; text-decoration: none'} %>
+      </div>
+      </br>
+    <% end %>
+  </ul>
+</div>
+
