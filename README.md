@@ -6,6 +6,8 @@ $ rails --version
 Rails 5.2.0
 ```
 
+Picture of the view located in home directory `ScreenShot.png`
+
 To run:
 ```
 $ rails s
